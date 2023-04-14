@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: map-deployment
+  labels:
+    app: map
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: map
+  template:
+    metadata:
+      labels:
+        app: map
+    spec:
+      containers:
+      - name: map
+        image: ybdock1/taiwan-maptiler
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        # resources:
+        #   requests:
+        #     memory: "1024Mi"
+        #     cpu: "200m"
+        #   limits:
+        #     memory: "1024Mi"
+        #     cpu: "400m"
